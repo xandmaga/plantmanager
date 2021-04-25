@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "App desenvovido durante a NLW5 na trilha de React Native",
+    "githubUrl": "https://github.com/xandmaga/"
   }
 }

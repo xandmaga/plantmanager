@@ -7,11 +7,12 @@ interface ButtonProps extends TouchableOpacityProps {
   title: string
 }
 
-export function Button({ title, ...touchableOpacityProps }: ButtonProps){
+export function Button({ title, disabled, ...touchableOpacityProps }: ButtonProps){
   return (
   <TouchableOpacity 
-    style={styles.container}
-    activeOpacity={0.7}
+    style={disabled ? styles.containerDisabled: styles.container }
+    disabled={disabled}
+    {...touchableOpacityProps}
   >
   
     <Text style={styles.text} >{title}</Text>
@@ -26,8 +27,16 @@ const styles = StyleSheet.create({
     backgroundColor: colors.green,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 16
+    borderRadius: 16,
   },
+  containerDisabled: {
+    height: 56,
+    backgroundColor: colors.green,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 16,
+    opacity: 0.7
+  },  
   text: {
     fontSize: 17,
     fontFamily: fonts.text,
