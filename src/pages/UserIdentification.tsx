@@ -39,47 +39,47 @@ export function UserIdentification(){
 
   return (
     <SafeAreaView style={styles.container} >
+
       <KeyboardAvoidingView 
       style={styles.container} 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <TouchableWithoutFeedback 
-          style={styles.content} 
-          onPress={Keyboard.dismiss}
-        >
-          <View style={styles.content} >
-            <View style={styles.form}>
-              <View style={styles.header}>
-                <Text style={styles.emoji}>
-                  { isFilled ? '😄' : '😃'  }
-                </Text>
-                <Text style={styles.title}>          
-                Como podemos{'\n'} chamar você?
-                </Text>
-              </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+          <View style={styles.form}>
+            <View style={styles.header}>
+              <Text style={styles.emoji}>
+                { isFilled ? '😄' : '😃'  }
+              </Text>
+              <Text style={styles.title}>          
+              Como podemos{'\n'} chamar você?
+              </Text>
               <TextInput 
-                style={[
-                  styles.input,
-                  (isFocused || isFilled) && { borderColor: colors.green}
-                ]} 
-                placeholder='Digite um nome' 
-                onBlur={handleInputBlur}
-                onFocus={handleInputFocus}
-                onChangeText={handleInputChange}
-                value={name}
-              >              
-              </TextInput>
-              <View style={styles.footer}>
-                <Button 
-                title='Confirmar'
-                disabled={!isFilled}
-                activeOpacity={0.7}
-                onPress={handleConfirmarPress} 
-                />
-              </View>
-            </View>
+              style={[
+                styles.input,
+                (isFocused || isFilled) && { borderColor: colors.green}
+              ]} 
+              placeholder='Digite um nome' 
+              onBlur={handleInputBlur}
+              onFocus={handleInputFocus}
+              onChangeText={handleInputChange}
+              value={name}
+            >              
+            </TextInput>              
+          </View>
+
           </View>
         </TouchableWithoutFeedback>
+        
+        <View style={styles.footer}>
+          <Button 
+          title='Confirmar'
+          disabled={!isFilled}
+          activeOpacity={0.7}
+          onPress={handleConfirmarPress} 
+          />
+        </View>                            
+
+
       </KeyboardAvoidingView>
     </SafeAreaView>
   )
@@ -90,15 +90,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'space-around'
-  },
-  content: {
-    flex: 1,
-    width: '100%'
+    justifyContent: 'space-evenly'
   },
   form: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     paddingHorizontal: 54,
     alignItems: 'center'
   },
@@ -106,9 +102,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   footer: {
-    marginTop: 40,  
+    marginBottom: 300,  
     width: '100%',
-    paddingHorizontal: 20  
+    paddingHorizontal: 54  
   }, 
   emoji:{
     fontSize: 44

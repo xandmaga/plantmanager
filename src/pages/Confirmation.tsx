@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { useState } from 'react';
 import {
   SafeAreaView,
@@ -10,6 +11,11 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 export function Confirmation(){
+  const navigation = useNavigation();
+
+  function handleComecarPress(){
+    navigation.navigate('PlantSelect');
+  }
 
   return (
     <SafeAreaView style={styles.container} >
@@ -24,9 +30,10 @@ export function Confirmation(){
         Agora vamos começar a cuidar das suas{'\n'} plantinhas com muito cuidado.
         </Text>
         <View style={styles.footer}>
-        <Button 
-        style={ {opacity: 0.2}}
+        <Button
         title='Começar' 
+        disabled={false}
+        onPress={handleComecarPress}
           />
         </View>          
       </View>
